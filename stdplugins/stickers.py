@@ -55,7 +55,7 @@ async def _(event):
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
         packname = f"@loxxi AnimatedStickers"
-        packshortname = f"loxxi_animatedPack"  # format: Uni_Borg_userid
+        packshortname = f"loxxi_animatedPack_as"  # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
         return
@@ -65,8 +65,7 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("Grabbing Sketch Brush & Painting this Picture")
-    print(uploaded_sticker)
+    await event.edit("Grabbing Sketch Brush & Painting this Picture"")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
@@ -86,12 +85,16 @@ async def _(event):
                 return
             w = await bot_conv.send_file(
                 file=uploaded_sticker,
+                allow_cache=False,
                 force_document=True
             )
-            print(w)
-            await bot_conv.get_response()
+            response = await bot_conv.get_response()
+            if "Sorry" in response.text:
+                await event.edit(f"**FAILED**! @Stickers replied: {response.text}")
+                return
             await silently_send_message(bot_conv, sticker_emoji)
             await silently_send_message(bot_conv, "/publish")
+            response = await silently_send_message(bot_conv, f"<{packname}>")
             await silently_send_message(bot_conv, "/skip")
             response = await silently_send_message(bot_conv, packshortname)
             if response.text == "Sorry, this short name is already taken.":
@@ -103,14 +106,18 @@ async def _(event):
             await silently_send_message(bot_conv, packshortname)
             await bot_conv.send_file(
                 file=uploaded_sticker,
+                allow_cache=False,
                 force_document=True
             )
             response = await bot_conv.get_response()
+            if "Sorry" in response.text:
+                await event.edit(f"**FAILED**! @Stickers replied: {response.text}")
+                return
             await silently_send_message(bot_conv, response)
             await silently_send_message(bot_conv, sticker_emoji)
             await silently_send_message(bot_conv, "/done")
 
-    await event.edit(f"Painting Done! Find Your Masterpiece [Here](t.me/addstickers/{packshortname})")
+   await event.edit(f"Painting Done! Find Your Masterpiece [Here](t.me/addstickers/{packshortname})")
 
 
 @borg.on(admin_cmd("packinfo"))
@@ -126,7 +133,7 @@ async def _(event):
         return
     stickerset_attr_s = rep_msg.document.attributes
     stickerset_attr = find_instance(stickerset_attr_s, DocumentAttributeSticker)
-    if not stickerset_attr.tickerset:
+    if not stickerset_attr.stickerset:
         await event.edit("sticker does not belong to a pack.")
         return
     get_stickerset = await borg(
