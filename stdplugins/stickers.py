@@ -65,7 +65,7 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("Grabbing Sketch Brush & Painting this Picture")
+    await event.edit("Grabbing Sketch Brush & Painting this Picture"")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
@@ -117,8 +117,9 @@ async def _(event):
             await silently_send_message(bot_conv, sticker_emoji)
             await silently_send_message(bot_conv, "/done")
 
-   
-await event.edit(f"sticker added! Your pack can be found [here](t.me/addstickers/{packshortname})")
+    await event.edit(f"Painting Done! Find Your Masterpiece [here](t.me/addstickers/{packshortname})")
+
+
 @borg.on(admin_cmd("packinfo"))
 async def _(event):
     if event.fwd_from:
