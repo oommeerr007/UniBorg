@@ -20,6 +20,7 @@ regex
 requests
 speedtest-cli
 sqlalchemy
+Oauth2client
 telegraph
 urbandict
 wikipedia
@@ -35,7 +36,6 @@ pytz
 webdriver-manager
 cowpy
 cowsay
-oauth2client
 pyfiglet
 git+https://github.com/LonamiWebs/Telethon
 humanize
