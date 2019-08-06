@@ -39,7 +39,6 @@ cowsay
 pyfiglet
 git+https://github.com/LonamiWebs/Telethon
 humanize
-GOOGLE_CHROME_BIN
 hastebin.py
 async_generator
 pybase64
