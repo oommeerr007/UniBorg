@@ -15,6 +15,7 @@ hachoir
 Pillow
 psycopg2
 pySmartDL
+python-barcode
 python-magic
 regex
 requests
