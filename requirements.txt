@@ -1,3 +1,2 @@
 telethon
-ChatterBot
 -r ./requirements-stdborg.txt
