@@ -5,7 +5,6 @@ usage:- .slap in reply to any message, or u gonna slap urself.
 
 import sys
 from telethon import events, functions
-from uniborg.util import admin_cmd
 import random
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
@@ -16,12 +15,12 @@ SLAP_TEMPLATES = [
     "{hits} {user2} in the face with a {item}.",
     "{hits} {user2} around a bit with a {item}.",
     "{throws} a {item} at {user2}.",
-    "grabs a {item} and {throws} it at {user2}'s face.",
-    "launches a {item} in {user2}'s general direction.",
-    "starts slapping {user2} silly with a {item}.",
-    "pins {user2} down and repeatedly {hits} them with a {item}.",
-    "grabs up a {item} and {hits} {user2} with it.",
-    "ties {user2} to a chair and {throws} a {item} at them.",
+    "grab a {item} and {throws} it at {user2}'s face.",
+    "launch a {item} in {user2}'s general direction.",
+    "start slapping {user2} silly with a {item}.",
+    "pin {user2} down and repeatedly {hits} them with a {item}.",
+    "grab up a {item} and {hits} {user2} with it.",
+    "tie {user2} to a chair and {throws} a {item} at them.",
     "gave a friendly push to help {user2} learn to swim in lava."
 ]
 
@@ -58,20 +57,22 @@ ITEMS = [
 ]
 
 THROW = [
-    "throws",
-    "flings",
-    "chucks",
-    "hurls",
+    "throw",
+    "fling",
+    "chuck",
+    "hurl",
 ]
 
 HIT = [
-    "hits",
-    "whacks",
-    "slaps",
-    "smacks",
-    "bashes",
+    "hit",
+    "whack",
+    "slap",
+    "smack",
+    "bash",
 ]
-@borg.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
+
+
+@borg.on(events.NewMessage(pattern=r"\.slap ?(.*)", outgoing=True))
 async def who(event):
     if event.fwd_from:
         return
@@ -91,7 +92,7 @@ async def who(event):
 async def get_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.from_id))
+        replied_user = await borg(GetFullUserRequest(previous_message.from_id))
     else:
         user = event.pattern_match.group(1)
 
@@ -99,7 +100,7 @@ async def get_user(event):
             user = int(user)
 
         if not user:
-            self_user = await event.client.get_me()
+            self_user = await borg.get_me()
             user = self_user.id
 
         if event.message.entities is not None:
@@ -107,11 +108,11 @@ async def get_user(event):
 
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await borg(GetFullUserRequest(user_id))
                 return replied_user
         try:
-            user_object = await event.client.get_entity(user)
-            replied_user = await event.client(GetFullUserRequest(user_object.id))
+            user_object = await borg.get_entity(user)
+            replied_user = await borg(GetFullUserRequest(user_object.id))
 
         except (TypeError, ValueError):
             await event.edit("`I don't slap strangers !!`")
@@ -134,6 +135,5 @@ async def slap(replied_user, event):
     hit = random.choice(HIT)
     throw = random.choice(THROW)
 
-    caption = "@"+borg.me.username+" "+ temp.format(user2=slapped, item=item, hits=hit, throws=throw)
-
-    return caption
+    caption = "I " + temp.format(user2=slapped, item=item, hits=hit, throws=throw)
+return caption
