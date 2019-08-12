@@ -1,6 +1,7 @@
 """
 SLAP Plugin For Userbot
 usage:- .slap in reply to any message, or u gonna slap urself.
+
 """
 
 import sys
@@ -136,4 +137,5 @@ async def slap(replied_user, event):
     throw = random.choice(THROW)
 
     caption = "I " + temp.format(user2=slapped, item=item, hits=hit, throws=throw)
-return caption
+
+    return caption
