@@ -1,15 +1,12 @@
 """
 A Torrent Client Plugin Based On Aria2 for Userbot
-
 cmds: Magnet link : .magnet magnetLink
       Torrent file from local: .tor file_path
       Show Downloads: .show
       Remove All Downloads: .ariaRM
       Resume All Downloads: .ariaResume
       Pause All Downloads:  .ariaP
-
 By:- @Zero_cool7870
-
 Credits: https://github.com/jaskaranSM/UniBorg/blob/b42cd70144143ce079e5fb3aed49c9aa1412481b/stdplugins/aria.py
 """
 
