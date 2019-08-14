@@ -49,7 +49,7 @@ class Config(object):
     # set blacklist_chats where you do not want userbot's features
     UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
     # maximum number of messages for antiflood
-    MAX_ANTI_FLOOD_MESSAGES = 10
+    MAX_ANTI_FLOOD_MESSAGES = 8
     # warn mode for anti flood
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
         until_date=None,
@@ -58,17 +58,12 @@ class Config(object):
     )
     # chat ids or usernames, it is recommended to use chat ids,
     # providing usernames means an additional overhead for the user
-    CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
+    CHATS_TO_MONITOR_FOR_ANTI_FLOOD = [-1001212478773 -1001465434338]
     # specify LOAD and NO_LOAD
     LOAD = []
     # foloowing plugins won't work on Heroku,
     # because of their ephemeral file system
-    NO_LOAD = [
-        "",
-        "",
-        "",
-        ""
-    ]
+    NO_LOAD = []
     # Get your own API key from https://www.remove.bg/ or
     # feel free to use http://telegram.dog/Remove_BGBot
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -99,22 +94,19 @@ class Config(object):
     # VeryStream only supports video formats
     VERY_STREAM_LOGIN = os.environ.get("VERY_STREAM_LOGIN", None)
     VERY_STREAM_KEY = os.environ.get("VERY_STREAM_KEY", None)
+    #Google Chrome Stuff
+    CHROME_DRIVER = os.environ.get("CHROME_DRIVER", None)
+    GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
     # Google Drive ()
     G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
     G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
     G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
-    #
+    # 
     TELE_GRAM_2FA_CODE = os.environ.get("TELE_GRAM_2FA_CODE", None)
-    #
     GROUP_REG_SED_EX_BOT_S = os.environ.get("GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)bot")
     # rapidleech plugins
     OPEN_LOAD_LOGIN = os.environ.get("OPEN_LOAD_LOGIN", "0")
     OPEN_LOAD_KEY = os.environ.get("OPEN_LOAD_KEY", "0")
-    # Google Chrome Selenium Stuff
-    # taken from https://github.com/jaskaranSM/UniBorg/blob/9072e3580cc6c98d46f30e41edbe73ffc9d850d3/sample_config.py#L104-L106
-    CHROME_DRIVER = os.environ.get("GOOGLE_CHROME_DRIVER", None)
-    GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
-
 
 class Production(Config):
     LOGGER = False
