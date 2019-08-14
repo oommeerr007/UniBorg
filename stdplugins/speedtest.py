@@ -43,7 +43,8 @@ async def _(event):
         response = s.results.share()
         speedtest_image = response
         if as_text:
-            await event.edit("""**SpeedTest** completed in {} seconds
+            await event.edit("""`SpeedTest completed in {} seconds`
+
 `Download: {}`
 `Upload: {}`
 `Ping: {}`
