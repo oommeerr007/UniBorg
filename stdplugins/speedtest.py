@@ -21,7 +21,7 @@ async def _(event):
         as_document = True
     elif input_str == "text":
         as_text = True
-    await event.edit("Calculating my internet speed. Please wait!")
+    await event.edit("`Calculating my internet speed. Please wait!`")
     start = datetime.now()
     s = speedtest.Speedtest()
     s.get_best_server()
@@ -44,11 +44,11 @@ async def _(event):
         speedtest_image = response
         if as_text:
             await event.edit("""**SpeedTest** completed in {} seconds
-Download: {}
-Upload: {}
-Ping: {}
-Internet Service Provider: {}
-ISP Rating: {}""".format(ms, convert_from_bytes(download_speed), convert_from_bytes(upload_speed), ping_time, i_s_p, i_s_p_rating))
+`Download: {}`
+`Upload: {}`
+`Ping: {}`
+`Internet Service Provider: {}`
+`ISP Rating: {}`""".format(ms, convert_from_bytes(download_speed), convert_from_bytes(upload_speed), ping_time, i_s_p, i_s_p_rating))
         else:
             await borg.send_file(
                 event.chat_id,
