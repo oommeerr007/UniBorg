@@ -196,7 +196,7 @@ You can log-in as Bot or User and do many cool things with your Telegram account
 
 All instructions to run @UniBorg in your device has been explained in https://github.com/Somto811/UniBorg""",
                 buttons=[
-                    [custom.Button.url("Contact the Creator", "https://telegram.dog/snappy101"), custom.Button.url(
+                    [custom.Button.url("Contact the Creator", "https://telegram.dog/loxxi"), custom.Button.url(
                         "Tutorial", "https://telegra.ph/Tutorial-07-26")],
                     [custom.Button.url(
                         "Source Code", "https://github.com/Somto811/UniBorg")],
@@ -260,7 +260,7 @@ All instructions to run @UniBorg in your device has been explained in https://gi
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = 2
-    multi = "😇🤠🤡😈👿👹👺💀☠👻👽👾🤖💩😺😸😹😻😼😽🙀😿😾🙈🙉🙊👦👧👨👩👴👵👶"
+    multi = "😇🤠🤡😈👿👹👺💀☠👻👽👾🤖💩😺😸😹😻😼😽🙀😿😾🙈🙉🙊👦👧👨👩👴👵👶😊❤️😜😌😚😁😎👨‍💻🥶🤒👍🤝🙌🦋🦌🦚🦜🏆🚴‍♂✈️💯📣🇳🇬"
     helpable_plugins = []
     for p in loaded_plugins:
         if not p.startswith("_"):
