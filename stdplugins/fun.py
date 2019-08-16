@@ -63,7 +63,7 @@ GEY_STRINGS = [
 ]
 PRO_STRINGS = [
      "`This gey is pro as phack.`",
-     "`Pros here -_- Time to Leave`",
+     "`Pros Is Here, Don't Leave`",
 	"`What are you bsdk?Human or Gawd` (+_+)",
      "`Aye pedo gey, send moni pls`",
      "`U iz pru & I iz nub`",
