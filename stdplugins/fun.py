@@ -155,13 +155,13 @@ async def _(event):
     await event.edit(reply_text)
 			  
 			  
-@borg.on(admin_cmd("abuse ?(.*)"))
+@borg.on(admin_cmd("gaali ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
-    bro = random.randint(0, len(ABUSE_STRINGS) - 1)    
+    bro = random.randint(0, len(GAALI_STRINGS) - 1)    
     input_str = event.pattern_match.group(1)
-    reply_text = ABUSE_STRINGS[bro]
+    reply_text = GAALI_STRINGS[bro]
     await event.edit(reply_text)
 			  
 @borg.on(admin_cmd("abusehard ?(.*)"))
