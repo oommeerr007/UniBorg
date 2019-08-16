@@ -35,7 +35,7 @@ RAPE_STRINGS = [
      "`Rape coming... Raped! haha 😆`",
      "`Lodu Andha hai kya Yaha tera rape ho raha hai aur tu abhi tak yahi gaand mara raha hai lulz`",
 ] 
-ABUSE_STRINGS = [
+GAALI_STRINGS = [
        "`Madharchod`",
 	   "`Gaandu`",
 	   "`Chutiya hi rah jayega`",
