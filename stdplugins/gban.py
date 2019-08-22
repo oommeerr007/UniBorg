@@ -10,9 +10,6 @@ from uniborg.util import admin_cmd
 
 @borg.on(admin_cmd("gban ?(.*)"))
 async def _(event):
-    if Config.G_BAN_LOGGER_GROUP is None:
-        await event.edit("ENV VAR is not set. This module will not work.")
-        return
     if event.fwd_from:
         return
     reason = event.pattern_match.group(1)
@@ -31,9 +28,6 @@ async def _(event):
 
 @borg.on(admin_cmd("ungban ?(.*)"))
 async def _(event):
-    if Config.G_BAN_LOGGER_GROUP is None:
-        await event.edit("ENV VAR is not set. This module will not work.")
-        return
     if event.fwd_from:
         return
     reason = event.pattern_match.group(1)
